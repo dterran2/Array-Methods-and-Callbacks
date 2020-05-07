@@ -106,30 +106,47 @@ getWinnersByYear();
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins(data, teamInitials) {
-    return get
+function getCountryWins(data, initials) {
+    const countries = data.map((ele, i) => {
+        if (data[i]['Home Team Goals'] > data[i]['Away Team Goals']) {
+            return data[i]['Home Team Initials'];
+        }else if (data[i]['Home Team Goals'] < data[i]['Away Team Goals']){
+            return data[i]['Away Team Initials'];
+        } else{
+            return 'Tie';
+        }
+    });
 
+    const number = contries.reduce((tally, amt) => {
+        tally[amt] ? tally[amt]++ : tally[amt] = 1;
+        return tally;
+    },{});
+    return number[initials];
 };
 
-// function getCountryWins (data, teamInitials) {
-//     data.reduce(teamInitials, ) = > {
-//         Match.Stage === "Finals" ? 
-//     }
-//     return 
-// };
-  consol.log(getCountryWins(fifaData, USA)
 
 
 /* Task 8: Write a function called `getAverageGoals` that accepts a parameter `data` 
 and returns the the average number of home team goals and away team goals scored per match (Hint: use .reduce and do this in 2 steps) */
 
-function getAverageGoals(data) {
-    let homeTeamArray = data.map(data['Home Team Goals']);
-    let awayTeamArray = data.map(data['Away Team Goals']);
-    data.map()
-    
 
+function getAverageGoals(data) {
+    let homeTeamArray = data.map((data) => {
+        return data['Home Team Goals']});
+    let awayTeamArray = data.map((data) => {
+        return data['Away Team Goals']});
+    
+    const homeGoalsTotal = homeGoals.reduce((acc,item) => {
+        return acc + item;
+    });
+
+    const awayGoalsTotal = awayGoals.reduce((acc,item) => {
+        return acc + item;
+    });
+    
+    return homeGoalsTotal / homeGoals.length + '' + awayGoalsTotal / awayGoals.length;
 };
+
 
 getAverageGoals();
 
